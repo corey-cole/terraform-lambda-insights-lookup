@@ -6,10 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        # terraform_wrapper: false is used to bypass issue #706
+        # https://github.com/gruntwork-io/terratest/issues/706#issuecomment-733495166
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.3.0
+          terraform_wrapper: false
       - name: Set up Golang
         uses: actions/setup-go@v3
         with:
