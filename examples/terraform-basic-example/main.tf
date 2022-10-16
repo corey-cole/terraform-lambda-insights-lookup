@@ -4,4 +4,5 @@ module "lambda_insights_layer" {
   //source = "github.com/corey-cole/terraform-lambda-insights-lookup"
 
   region = var.region
+  architecture = try(var.architecture, "x86_64")
 }
