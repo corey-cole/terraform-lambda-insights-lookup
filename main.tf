@@ -31,8 +31,8 @@ locals {
       arm64  = "arn:aws:lambda:ap-south-1:580247275435:layer:LambdaInsightsExtension-Arm64:2"
     },
     ap-northeast-1 = {
-      x86_64 = "",
-      arm64  = ""
+      x86_64 = "arn:aws:lambda:ap-northeast-1:580247275435:layer:LambdaInsightsExtension:32",
+      arm64  = "arn:aws:lambda:ap-northeast-1:580247275435:layer:LambdaInsightsExtension-Arm64:2"
     },
     ap-northeast-2 = {
       x86_64 = "arn:aws:lambda:ap-northeast-2:580247275435:layer:LambdaInsightsExtension:20",
@@ -50,10 +50,7 @@ locals {
       x86_64 = "arn:aws:lambda:ap-southeast-2:580247275435:layer:LambdaInsightsExtension:21",
       arm64  = "arn:aws:lambda:ap-southeast-2:580247275435:layer:LambdaInsightsExtension-Arm64:2"
     },
-    ap-northeast-1 = {
-      x86_64 = "arn:aws:lambda:ap-northeast-1:580247275435:layer:LambdaInsightsExtension:32",
-      arm64  = "arn:aws:lambda:ap-northeast-1:580247275435:layer:LambdaInsightsExtension-Arm64:2"
-    },
+
     ca-central-1 = {
       x86_64 = "arn:aws:lambda:ca-central-1:580247275435:layer:LambdaInsightsExtension:20",
       arm64  = ""
@@ -100,8 +97,3 @@ locals {
     }
   }
 }
-
-/*
- * ARM64 1.0.135.0
- * https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Lambda-Insights-extension-versionsARM.html
- */
