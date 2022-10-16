@@ -9,13 +9,13 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var cases = []struct{
-	region string
+var cases = []struct {
+	region   string
 	hasArm64 bool
 }{
 	{region: "us-east-1", hasArm64: true},
-	{region: "us-east-2", hasArm64: true}, 
-	{region: "us-west-1", hasArm64: false}, 
+	{region: "us-east-2", hasArm64: true},
+	{region: "us-west-1", hasArm64: false},
 	{region: "us-west-2", hasArm64: true},
 	{region: "ca-central-1", hasArm64: false},
 	{region: "sa-east-1", hasArm64: false},
@@ -27,7 +27,7 @@ var cases = []struct{
 	{region: "ap-southeast-2", hasArm64: true},
 	{region: "ap-northeast-1", hasArm64: true},
 	{region: "ap-northeast-2", hasArm64: false},
-	{region: "ap-south-1", hasArm64: true}, 
+	{region: "ap-south-1", hasArm64: true},
 	{region: "eu-north-1", hasArm64: false},
 }
 
@@ -50,7 +50,7 @@ func TestRegionInArn(t *testing.T) {
 			defer terraform.Destroy(t, terraformOptions)
 			terraform.InitAndApply(t, terraformOptions)
 			actualLayerArn := terraform.Output(t, terraformOptions, "layer_arn")
-            // The ARN should contain the requested region
+			// The ARN should contain the requested region
 			assert.True(t, strings.Contains(actualLayerArn, tt.region))
 		})
 	}
@@ -67,7 +67,7 @@ func TestArm64Regions(t *testing.T) {
 			terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 				TerraformDir: "../examples/terraform-basic-example",
 				Vars: map[string]interface{}{
-					"region": tt.region,
+					"region":       tt.region,
 					"architecture": "arm64",
 				},
 				NoColor: true,
@@ -77,10 +77,10 @@ func TestArm64Regions(t *testing.T) {
 			actualLayerArn := terraform.Output(t, terraformOptions, "layer_arn")
 			if tt.hasArm64 {
 				// The ARN should contain the requested region
-                assert.True(t, strings.Contains(actualLayerArn, tt.region))
+				assert.True(t, strings.Contains(actualLayerArn, tt.region))
 			} else {
 				assert.Equal(t, actualLayerArn, "")
 			}
 		})
-	}	
+	}
 }
